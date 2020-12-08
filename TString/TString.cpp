@@ -4,7 +4,7 @@ void TString::initNULLstr(unsigned char* str)
 {
 	int len = str[0];
 	if (len > maxSize)
-		throw "\n РЎР»РёС€РєРѕРј Р±РѕР»СЊС€РѕР№ СЂР°Р·РјРµСЂ СЃС‚СЂРѕРєРё.\n";
+		throw "\n Слишком большой размер строки.\n";
 	for (int i = 0; i < len; ++i)
 		string[i] = '\0';
 }
@@ -68,7 +68,7 @@ unsigned char* TString::insertSubstr(unsigned char* str)
 {
 	int bothLength = this->string[0] + str[0];
 	if (bothLength > maxSize)
-		throw "\n РћР±С‰РёР№ СЂР°Р·РјРµСЂ СЃС‚СЂРѕРє РїСЂРµРІС‹С€Р°РµС‚ РјР°РєСЃРёРјР°Р»СЊРЅС‹Р№ РґРѕРїСѓСЃС‚РёРјС‹Р№ СЂР°Р·РјРµСЂ.\n";
+		throw "\n Общий размер строк превышает максимальный допустимый размер.\n";
 	unsigned char buffer[] = { '\0' };
 	buffer[0] = bothLength;
 	for (int i = 1; i < this->string[0] - 1; i++)
@@ -90,7 +90,7 @@ TString TString::operator+(TString& str)
 {
 	int bothLength = this->string[0]+str.string[0];
 	if (bothLength > maxSize)
-		throw "\n РћР±С‰РёР№ СЂР°Р·РјРµСЂ СЃС‚СЂРѕРє РїСЂРµРІС‹С€Р°РµС‚ РјР°РєСЃРёРјР°Р»СЊРЅРѕ РґРѕРїСѓСЃС‚РёРјС‹Р№.\n";
+		throw "\n Общий размер строк превышает максимально допустимый.\n";
 	unsigned char* buff = new unsigned char[bothLength];
 	buff[0] = bothLength;
 	for (int i = 1; i < this->string[0]; i++)
